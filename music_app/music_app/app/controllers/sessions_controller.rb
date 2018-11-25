@@ -2,12 +2,13 @@ class SessionsController < ApplicationController
   # before_action :require_no_user!, only: i(create) What is this?
 
   def create
-    debugger
     user = User.find_by_credentials(
       params[:user][:email],
       params[:user][:password]
     )
+    debugger
     if user.nil?
+
       flash.now[:errors] = ['Invalid email and/or password']
       render :new
     else
